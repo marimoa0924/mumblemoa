@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mumblemoa</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap">
+    <style>
+        /* CSS 스타일 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #e3dcf3; /* 연한 보라색 */
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #9370a5; /* 연한 보라색 */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #7e5490; /* 보라색 */
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #9370a5; /* 연한 보라색 */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        article {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        article h2 {
+            color: #9370a5; /* 연한 보라색 */
+        }
+        article p {
+            color: #333;
+        }
+        article a {
+            color: #9370a5; /* 연한 보라색 */
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>나의 멋진 블로그</h1>
+    </header>
+    <nav>
+        <a href="#">홈</a>
+        <a href="#">글 목록</a>
+        <a href="#">소개</a>
+        <a href="#">연락하기</a>
+    </nav>
+    <main id="postList">
+        <!-- 여기에 포스트 목록이 표시될 곳 -->
+    </main>
+    <footer>
+        &copy; 2024 나의 멋진 블로그
+    </footer>
+
+    <script>
+        // 포스트 목록을 가져와서 메인 페이지에 표시하는 함수
+        function fetchPosts() {
+            // 포스트 폴더의 URL
+            const postsFolderUrl = 'marimoa0924/mumblemoa/posts/';
+
+            // 포스트 목록을 가져옵니다.
+            fetch(postsFolderUrl)
+                .then(response => response.text())
+                .then(data => {
+                    // 가져온 파일 목록을 줄 단위로 나눕니다.
+                    const fileList = data.split('\n');
+
+                    // 가져온 파일 목록을 메인 페이지에 표시합니다.
+                    const postList = document.getElementById('postList');
+                    fileList.forEach((fileName, index) => {
+                        const postId = index + 1;
+                        const listItem = document.createElement('article');
+                        const link = document.createElement('a');
+                        link.href = `post${postId}.txt`; // 포스트 파일의 경로
+                        link.textContent = fileName;
+                        listItem.appendChild(link);
+                        postList.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error('Error fetching posts:', error));
+        }
+
+        // 페이지 로드 시 포스트 목록을 가져와서 표시합니다.
+        window.onload = fetchPosts;
+    </script>
+</body>
+</html>
