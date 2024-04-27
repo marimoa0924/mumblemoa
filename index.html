@@ -82,7 +82,8 @@
         // 포스트 목록을 가져와서 메인 페이지에 표시하는 함수
         function fetchPosts() {
             // 포스트 폴더의 URL
-            const postsFolderUrl = 'marimoa0924/mumblemoa/posts/';
+            const postsFolderUrl = 'https://marimoa0924.github.io/mumblemoa/posts/';
+
 
             // 포스트 목록을 가져옵니다.
             fetch(postsFolderUrl)
@@ -97,7 +98,7 @@
                         const postId = index + 1;
                         const listItem = document.createElement('article');
                         const link = document.createElement('a');
-                        link.href = `post${postId}.txt`; // 포스트 파일의 경로
+                        link.href = `https://marimoa0924.github.io/mumblemoa/posts/${fileName}`; // 포스트 파일의 경로
                         link.textContent = fileName;
                         listItem.appendChild(link);
                         postList.appendChild(listItem);
