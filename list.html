@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mumblemoa</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap">
+    <title>글 목록 - 나의 멋진 블로그</title>
     <style>
         /* CSS 스타일 */
         body {
@@ -79,11 +78,10 @@
     </footer>
 
     <script>
-        // 포스트 목록을 가져와서 메인 페이지에 표시하는 함수
+        // 포스트 목록을 가져와서 리스트 페이지에 표시하는 함수
         function fetchPosts() {
             // 포스트 폴더의 URL
             const postsFolderUrl = 'https://marimoa0924.github.io/mumblemoa/posts/';
-
 
             // 포스트 목록을 가져옵니다.
             fetch(postsFolderUrl)
@@ -92,7 +90,7 @@
                     // 가져온 파일 목록을 줄 단위로 나눕니다.
                     const fileList = data.split('\n');
 
-                    // 가져온 파일 목록을 메인 페이지에 표시합니다.
+                    // 가져온 파일 목록을 리스트 페이지에 표시합니다.
                     const postList = document.getElementById('postList');
                     fileList.forEach((fileName, index) => {
                         const postId = index + 1;
